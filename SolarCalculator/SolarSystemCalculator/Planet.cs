@@ -1,36 +1,42 @@
 ﻿namespace SolarSystemCalculator
 {
-    class Planet
+    public class Planet
     {
         private static string PlanetName;
-        private static double PlanetMass, PlanetDistance;
+        private static double PlanetMass;
+        private static double PlanetDistance;
 
-        public static void SetPlanetName(string name)
+        public Planet()
+        {
+
+        }
+        
+        public void SetPlanetName(string name)
         {
             PlanetName = name;
         }
 
-        public static string GetPlanetName()
+        public string GetPlanetName()
         {
             return PlanetName;
         }
 
-        public static void SetPlanetMass(double mass)
+        public void SetPlanetMass(double mass)
         {
             PlanetMass = mass;
         }
 
-        public static double GetPlanetMass()
+        public double GetPlanetMass()
         {
             return PlanetMass;
         }
 
-        public static void SetPlanetDistance(double distance)
+        public void SetPlanetDistance(double distance)
         {
             PlanetDistance = distance;
         }
 
-        public static double GetPlanetDistance()
+        public double GetPlanetDistance()
         {
             return PlanetDistance;
         }
