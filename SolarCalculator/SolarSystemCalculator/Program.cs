@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SolarSystemCalculator
 {
-    internal class Program
+    class Program
     {
         public static void Main(string[] args)
         {
