@@ -2,9 +2,9 @@
 {
     public class Planet
     {
-        private static string PlanetName;
-        private static double PlanetMass;
-        private static double PlanetDistance;
+        private string PlanetName;
+        private double PlanetMass;
+        private double PlanetDistance;
 
         public Planet(string name)
         {
