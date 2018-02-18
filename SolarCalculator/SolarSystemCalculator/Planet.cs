@@ -6,9 +6,9 @@
         private static double PlanetMass;
         private static double PlanetDistance;
 
-        public Planet()
+        public Planet(string name)
         {
-            
+            PlanetName = name;
         }
         
         public void SetPlanetName(string name)
