@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace SolarSystemCalculator
 {
@@ -36,6 +35,7 @@ namespace SolarSystemCalculator
             Console.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", Uranus.GetPlanetName(), Uranus.GetPlanetMass(), Uranus.GetPlanetDistance());
             Console.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", Neptune.GetPlanetName(), Neptune.GetPlanetMass(), Neptune.GetPlanetDistance());
             Console.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", Pluto.GetPlanetName(), Pluto.GetPlanetMass(), Pluto.GetPlanetDistance());
+
             Console.Read();
         }
 
@@ -56,7 +56,14 @@ namespace SolarSystemCalculator
                 DistanceDone = Double.TryParse(Console.ReadLine(), out Distance);
                 planet.SetPlanetDistance(Distance);
 
+                if(MassDone == false || DistanceDone == false)
+                {
+                    Console.WriteLine("Value(s) invalid. Please try again.");
+                }
+
+                Console.Clear();
+
             } while (MassDone == false || DistanceDone == false);
         }
-    }
+    }l
 }
