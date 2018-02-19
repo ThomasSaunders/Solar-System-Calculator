@@ -5,10 +5,13 @@
         private string PlanetName;
         private double PlanetMass;
         private double PlanetDistance;
+        private double CentreOfMass;
 
-        public Planet(string name)
+        public Planet(string name, double mass = 0, double distance = 0)
         {
             PlanetName = name;
+            PlanetMass = mass;
+            PlanetDistance = distance;
         }
         
         public void SetPlanetName(string name)
@@ -39,6 +42,16 @@
         public double GetPlanetDistance()
         {
             return PlanetDistance;
+        }
+
+        public void SetCentreOfMass(double centre)
+        {
+            CentreOfMass = centre;
+        }
+
+        public double GetCentreOfMass()
+        {
+            return CentreOfMass;
         }
     }
 }
