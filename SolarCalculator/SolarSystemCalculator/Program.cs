@@ -91,8 +91,8 @@ namespace SolarSystemCalculator
             TotalCentreOfMass += CalculateCentreOfMass(Pluto, TotalCentreOfMass);
             Debug.WriteLine(TotalCentreOfMass.ToString());
 
-            Console.WriteLine("The centre of mass of the solar system is: {0} metres from the sun.", 
-                TotalCentreOfMass.ToString());
+            Console.WriteLine("The centre of mass of the solar system is: {0} metres ({1} metres to 3dp) from the sun.", 
+                TotalCentreOfMass.ToString("0.000E0"), Math.Round(TotalCentreOfMass, 3).ToString("0.000E0"));
 
             Console.Read();
         }
@@ -107,8 +107,6 @@ namespace SolarSystemCalculator
 
             return planet.GetCentreOfMass();
         }
-
-
 
         private static void SetPlanetInformation(Planet planet)
         {
