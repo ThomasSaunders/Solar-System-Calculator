@@ -14,7 +14,7 @@ namespace SolarSystemCalculator
         public static Planet Uranus = new Planet("Uranus", 86.8E24, 2872.5E9);
         public static Planet Neptune = new Planet("Neptune", 102E24, 4495.1E9);
         public static Planet Pluto = new Planet("Pluto", 0.0146E24, 5906.4E9);
-        public static Planet sun = new Planet("Sun", 1.989E30, 0);
+        public static Planet sun = new Planet("Sun", 1.989E30);
 
         public static double TotalMass;
 
@@ -35,32 +35,33 @@ namespace SolarSystemCalculator
                 SetPlanetInformation(Neptune);
                 SetPlanetInformation(Pluto);
             }
-            Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Mercury.GetPlanetName(), Mercury.GetPlanetMass(), Mercury.GetPlanetDistance());
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Venus.GetPlanetName(), Venus.GetPlanetMass(), Venus.GetPlanetDistance());
+                Mercury.PlanetName, Mercury.PlanetMass, Mercury.PlanetDistance);
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Earth.GetPlanetName(), Earth.GetPlanetMass(), Earth.GetPlanetDistance());
+                Venus.PlanetName, Venus.PlanetMass, Venus.PlanetDistance);
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Mars.GetPlanetName(), Mars.GetPlanetMass(), Mars.GetPlanetDistance());
+                Earth.PlanetName, Earth.PlanetMass, Earth.PlanetDistance);
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Jupiter.GetPlanetName(), Jupiter.GetPlanetMass(), Jupiter.GetPlanetDistance());
+                Mars.PlanetName, Mars.PlanetMass, Mars.PlanetDistance);
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Saturn.GetPlanetName(), Saturn.GetPlanetMass(), Saturn.GetPlanetDistance());
+                Jupiter.PlanetName, Jupiter.PlanetMass, Jupiter.PlanetDistance);
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Uranus.GetPlanetName(), Uranus.GetPlanetMass(), Uranus.GetPlanetDistance());
+                Saturn.PlanetName, Saturn.PlanetMass, Saturn.PlanetDistance);
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Neptune.GetPlanetName(), Neptune.GetPlanetMass(), Neptune.GetPlanetDistance());
+                Uranus.PlanetName, Uranus.PlanetMass, Uranus.PlanetDistance);
 
             Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
-                Pluto.GetPlanetName(), Pluto.GetPlanetMass(), Pluto.GetPlanetDistance());
+                Neptune.PlanetName, Neptune.PlanetMass, Neptune.PlanetDistance);
+
+            Debug.WriteLine("Mass of {0} is {1} kg, and the distance from the sun is {2} m.", 
+                Pluto.PlanetName, Pluto.PlanetMass, Pluto.PlanetDistance);
 
             Console.Clear();
 
@@ -91,21 +92,21 @@ namespace SolarSystemCalculator
             TotalCentreOfMass += CalculateCentreOfMass(Pluto, TotalCentreOfMass);
             Debug.WriteLine(TotalCentreOfMass.ToString());
 
-            Console.WriteLine("The centre of mass of the solar system is: {0} metres ({1} metres to 3dp) from the sun.", 
-                TotalCentreOfMass.ToString("0.000E0"), Math.Round(TotalCentreOfMass, 3).ToString("0.000E0"));
+            Console.WriteLine("The centre of mass of the solar system is: {0} metres from the sun.", 
+                TotalCentreOfMass.ToString("0.000E0"));
 
             Console.Read();
         }
 
         private static double CalculateCentreOfMass(Planet planet, double LastCentreOfMass)
         {
-            double PlanetDistance = planet.GetPlanetDistance() - LastCentreOfMass;
+            double PlanetDistance = planet.PlanetDistance - LastCentreOfMass;
 
-            planet.SetCentreOfMass((planet.GetPlanetMass() * PlanetDistance) / (sun.GetPlanetMass() + TotalMass));
+            planet.CentreOfMass = (planet.PlanetMass * PlanetDistance) / (sun.PlanetMass + TotalMass);
 
-            TotalMass += planet.GetPlanetMass();
+            TotalMass += planet.PlanetMass;
 
-            return planet.GetCentreOfMass();
+            return planet.CentreOfMass;
         }
 
         private static void SetPlanetInformation(Planet planet)
@@ -117,13 +118,13 @@ namespace SolarSystemCalculator
 
             do
             {
-                Console.WriteLine("Please enter the mass of {0} in kg", planet.GetPlanetName());
+                Console.WriteLine("Please enter the mass of {0} in kg", planet.PlanetName);
                 MassDone = Double.TryParse(Console.ReadLine(), out Mass);
-                planet.SetPlanetMass(Mass);
+                planet.PlanetMass = Mass;
 
-                Console.WriteLine("Please enter the distance of {0} from the sun in m", planet.GetPlanetName());
+                Console.WriteLine("Please enter the distance of {0} from the sun in m", planet.PlanetName);
                 DistanceDone = Double.TryParse(Console.ReadLine(), out Distance);
-                planet.SetPlanetDistance(Distance);
+                planet.PlanetDistance = Distance;
 
                 if(MassDone == false || DistanceDone == false)
                 {
